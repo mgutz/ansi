@@ -30,7 +30,7 @@ Other examples
 
 To view color combinations, from terminal
 
-	cd $GOPATH/github.com/mgutz/ansi
+	cd $GOPATH/src/github.com/mgutz/ansi
 	go test
 
 Style format
