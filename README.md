@@ -32,6 +32,11 @@ Other examples
 	Color(s, "red+b:white+h")  // red bold on white bright
 	Color(s, "red+B:white+h")  // red blink on white bright
 
+To view color combinations, from terminal.
+
+	cd $GOPATH/github.com/mgutz/ansi
+	go test
+
 ## Style format
 
 	"foregroundColor+attributes:backgroundColor+attributes"
@@ -54,6 +59,10 @@ Attributes
 * u = underline foreground
 * h = high intensity (bright) foreground, background
 * i = inverse
+
+## References
+
+Wikipedia ANSI escape codes [Colors](http://en.wikipedia.org/wiki/ANSI_escape_code#Colors)
 
 ## MIT License
 
