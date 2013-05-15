@@ -130,7 +130,7 @@ func ColorCode(style string) string {
 		}
 	}
 
-	code := "\033["
+	code := start
 	base := normalIntensityFG
 	if len(fgStyle) > 0 {
 		if strings.Contains(fgStyle, "b") {
