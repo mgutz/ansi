@@ -6,6 +6,7 @@ Small, fast library to create ANSI colored strings and codes.
 
 ## Example
 
+~~~go
 	import "github.com/mgutz/ansi"
 
 	// colorize a string, slowest method
@@ -20,9 +21,11 @@ Small, fast library to create ANSI colored strings and codes.
 	reset := ansi.ColorCode("reset")
 
 	msg := lime + "Bring back the 80s!" + reset
+~~~
 
 Other examples
 
+~~~go
 	Color(s, "red")            // red
 	Color(s, "red+b")          // red bold
 	Color(s, "red+B")          // red blinking
@@ -31,6 +34,7 @@ Other examples
 	Color(s, "red:white")      // red on white
 	Color(s, "red+b:white+h")  // red bold on white bright
 	Color(s, "red+B:white+h")  // red blink on white bright
+~~~
 
 To view color combinations, from terminal.
 
