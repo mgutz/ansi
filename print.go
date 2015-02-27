@@ -1,12 +1,10 @@
 package ansi
 
-import (
-	"fmt"
-	"testing"
-)
+// PrintStyles prints all style combinations to the terminal.
+func PrintStyles() {
+	oldPlain := plain
+	plain = false
 
-func TestPlain(t *testing.T) {
-	DisableColors(true)
 	bgColors := []string{
 		"",
 		":black",
@@ -25,14 +23,20 @@ func TestPlain(t *testing.T) {
 			println(padColor(fg, []string{"+b" + bg + "+h", "+bh" + bg + "+h", "+u" + bg + "+h", "+uh" + bg + "+h"}))
 		}
 	}
+	plain = oldPlain
 }
 
-func TestStyles(t *testing.T) {
-	PrintStyles()
-	DisableColors(false)
+func pad(s string, length int) string {
+	for len(s) < length {
+		s += " "
+	}
+	return s
 }
 
-func ExampleColorFunc() {
-	brightGreen := ColorFunc("green+h")
-	fmt.Println(brightGreen("lime"))
+func padColor(s string, styles []string) string {
+	buffer := ""
+	for _, style := range styles {
+		buffer += Color(pad(s+style, 20), s+style)
+	}
+	return buffer
 }
