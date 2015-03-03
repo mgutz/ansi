@@ -49,20 +49,18 @@ var (
 
 // ColorCode returns the ANSI color color code for style.
 func ColorCode(style string) string {
-	buf := colorCode(style)
-	if buf == nil {
-		return ""
-	}
-	return buf.String()
+	return colorCode(style).String()
 }
 
 // Gets the ANSI color code for a style.
 func colorCode(style string) *bytes.Buffer {
+	buf := bytes.NewBufferString("")
 	if plain || style == "" {
-		return nil
+		return buf
 	}
 	if style == "reset" {
-		return bytes.NewBufferString(Reset)
+		buf.WriteString(Reset)
+		return buf
 	}
 
 	foregroundBackground := strings.Split(style, ":")
@@ -83,7 +81,7 @@ func colorCode(style string) *bytes.Buffer {
 		}
 	}
 
-	buf := bytes.NewBufferString(start)
+	buf.WriteString(start)
 	base := normalIntensityFG
 	if len(fgStyle) > 0 {
 		if strings.Contains(fgStyle, "b") {
