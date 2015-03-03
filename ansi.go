@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"fmt"
 	"strings"
-	"sync"
 )
 
 const (
@@ -134,20 +133,15 @@ func ColorFunc(style string) func(string) string {
 			return s
 		}
 	}
-	buf := colorCode(style)
-	lenBuf := buf.Len()
-	var mutex sync.Mutex
-
+	color := ColorCode(style)
 	return func(s string) string {
 		if plain || s == "" {
 			return s
 		}
-		mutex.Lock()
+		buf := bytes.NewBufferString(color)
 		buf.WriteString(s)
 		buf.WriteString(Reset)
 		result := buf.String()
-		buf.Truncate(lenBuf)
-		mutex.Unlock()
 		return result
 	}
 }
