@@ -49,7 +49,11 @@ var (
 
 // ColorCode returns the ANSI color color code for style.
 func ColorCode(style string) string {
-	return colorCode(style).String()
+	buf := colorCode(style)
+	if buf == nil {
+		return ""
+	}
+	return buf.String()
 }
 
 // Gets the ANSI color code for a style.
