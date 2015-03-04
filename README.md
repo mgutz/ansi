@@ -78,6 +78,10 @@ Attributes
 
 Wikipedia ANSI escape codes [Colors](http://en.wikipedia.org/wiki/ANSI_escape_code#Colors)
 
+What about support on Windows? Use [colorable by mattn](https://github.com/mattn/go-colorable). 
+Ansi and colorable are used by [logxi](https://github.com/mgutz/logxi) to support logging in 
+color on Windows.
+
 ## MIT License
 
 Copyright (c) 2013 Mario Gutierrez mario@mgutz.com
