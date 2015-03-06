@@ -3,6 +3,7 @@ package ansi
 import (
 	"bytes"
 	"fmt"
+	"strconv"
 	"strings"
 )
 
@@ -15,6 +16,7 @@ const (
 	magenta
 	cyan
 	white
+	defaultt = 9
 
 	normalIntensityFG = 30
 	highIntensityFG   = 90
@@ -29,7 +31,59 @@ const (
 
 	// Reset is the ANSI reset escape sequence
 	Reset = "\033[0m"
+	// DefaultBG is the default background
+	DefaultBG = "\033[49m"
+	// DefaultFG is the default foreground
+	DefaultFG = "\033[39m"
 )
+
+// Black FG
+var Black string
+
+// Red FG
+var Red string
+
+// Green FG
+var Green string
+
+// Yellow FG
+var Yellow string
+
+// Blue FG
+var Blue string
+
+// Magenta FG
+var Magenta string
+
+// Cyan FG
+var Cyan string
+
+// White FG
+var White string
+
+// LightBlack FG
+var LightBlack string
+
+// LightRed FG
+var LightRed string
+
+// LightGreen FG
+var LightGreen string
+
+// LightYellow FG
+var LightYellow string
+
+// LightBlue FG
+var LightBlue string
+
+// LightMagenta FG
+var LightMagenta string
+
+// LightCyan FG
+var LightCyan string
+
+// LightWhite FG
+var LightWhite string
 
 var (
 	plain = false
@@ -43,8 +97,32 @@ var (
 		"magenta": magenta,
 		"cyan":    cyan,
 		"white":   white,
+		"default": defaultt,
 	}
 )
+
+func init() {
+	for i := 0; i < 256; i++ {
+		Colors[strconv.Itoa(i)] = i
+	}
+
+	Black = ColorCode("black")
+	Red = ColorCode("red")
+	Green = ColorCode("green")
+	Yellow = ColorCode("yellow")
+	Blue = ColorCode("blue")
+	Magenta = ColorCode("magenta")
+	Cyan = ColorCode("cyan")
+	White = ColorCode("white")
+	LightBlack = ColorCode("black+h")
+	LightRed = ColorCode("red+h")
+	LightGreen = ColorCode("green+h")
+	LightYellow = ColorCode("yellow+h")
+	LightBlue = ColorCode("blue+h")
+	LightMagenta = ColorCode("magenta+h")
+	LightCyan = ColorCode("cyan+h")
+	LightWhite = ColorCode("white+h")
+}
 
 // ColorCode returns the ANSI color color code for style.
 func ColorCode(style string) string {
@@ -64,7 +142,8 @@ func colorCode(style string) *bytes.Buffer {
 
 	foregroundBackground := strings.Split(style, ":")
 	foreground := strings.Split(foregroundBackground[0], "+")
-	fg := Colors[foreground[0]]
+	fgKey := foreground[0]
+	fg := Colors[fgKey]
 	fgStyle := ""
 	if len(foreground) > 1 {
 		fgStyle = foreground[1]
@@ -99,14 +178,27 @@ func colorCode(style string) *bytes.Buffer {
 			base = highIntensityFG
 		}
 	}
-	fmt.Fprintf(buf, "%d;", base+fg)
+
+	// if 256-color
+	n, err := strconv.Atoi(fgKey)
+	if err == nil {
+		fmt.Fprintf(buf, "38;5;%d;", n)
+	} else {
+		fmt.Fprintf(buf, "%d;", base+fg)
+	}
 
 	base = normalIntensityBG
 	if len(bg) > 0 {
 		if strings.Contains(bgStyle, "h") {
 			base = highIntensityBG
 		}
-		fmt.Fprintf(buf, "%d;", base+Colors[bg])
+		// if 256-color
+		n, err := strconv.Atoi(bg)
+		if err == nil {
+			fmt.Fprintf(buf, "48;5;%d;", n)
+		} else {
+			fmt.Fprintf(buf, "%d;", base+Colors[bg])
+		}
 	}
 
 	// remove last ";"

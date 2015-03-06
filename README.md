@@ -65,21 +65,50 @@ Colors
 * magenta
 * cyan
 * white
+* 0...255 (256 colors)
 
 Attributes
 
-* b = bold foreground
-* B = Blink foreground
-* u = underline foreground
-* h = high intensity (bright) foreground, background
-* i = inverse
+*   b = bold foreground
+*   B = Blink foreground
+*   u = underline foreground
+*   i = inverse
+*   h = high intensity (bright) foreground, background
+
+    does not work with 256 colors
+
+## Constants
+
+* ansi.Reset
+* ansi.DefaultBG
+* ansi.DefaultFG
+* ansi.DefaultFG
+* ansi.Black
+* ansi.Red
+* ansi.Green
+* ansi.Yellow
+* ansi.Blue
+* ansi.Magenta
+* ansi.Cyan
+* ansi.White
+* ansi.LightBlack
+* ansi.LightRed
+* ansi.LightGreen
+* ansi.LightYellow
+* ansi.LightBlue
+* ansi.LightMagenta
+* ansi.LightCyan
+* ansi.LightWhite
+
 
 ## References
 
 Wikipedia ANSI escape codes [Colors](http://en.wikipedia.org/wiki/ANSI_escape_code#Colors)
 
-What about support on Windows? Use [colorable by mattn](https://github.com/mattn/go-colorable). 
-Ansi and colorable are used by [logxi](https://github.com/mgutz/logxi) to support logging in 
+General [tips and formatting](http://misc.flogisoft.com/bash/tip_colors_and_formatting)
+
+What about support on Windows? Use [colorable by mattn](https://github.com/mattn/go-colorable).
+Ansi and colorable are used by [logxi](https://github.com/mgutz/logxi) to support logging in
 color on Windows.
 
 ## MIT License
