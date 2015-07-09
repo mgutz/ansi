@@ -82,7 +82,6 @@ Attributes
 * ansi.Reset
 * ansi.DefaultBG
 * ansi.DefaultFG
-* ansi.DefaultFG
 * ansi.Black
 * ansi.Red
 * ansi.Green
