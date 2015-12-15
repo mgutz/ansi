@@ -23,11 +23,12 @@ const (
 	normalIntensityBG = 40
 	highIntensityBG   = 100
 
-	start     = "\033["
-	bold      = "1;"
-	blink     = "5;"
-	underline = "4;"
-	inverse   = "7;"
+	start         = "\033["
+	bold          = "1;"
+	blink         = "5;"
+	underline     = "4;"
+	inverse       = "7;"
+	strikethrough = "9;"
 
 	// Reset is the ANSI reset escape sequence
 	Reset = "\033[0m"
@@ -175,6 +176,9 @@ func colorCode(style string) *bytes.Buffer {
 		}
 		if strings.Contains(fgStyle, "i") {
 			buf.WriteString(inverse)
+		}
+		if strings.Contains(fgStyle, "s") {
+			buf.WriteString(strikethrough)
 		}
 		if strings.Contains(fgStyle, "h") {
 			base = highIntensityFG
