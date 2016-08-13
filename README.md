@@ -21,7 +21,7 @@ msg := ansi.Color("foo", "red+b:white")
 // create a closure to avoid recalculating ANSI code compilation
 phosphorize := ansi.ColorFunc("green+h:black")
 msg = phosphorize("Bring back the 80s!")
-msg2 := phospohorize("Look, I'm a CRT!")
+msg2 := phosphorize("Look, I'm a CRT!")
 
 // cache escape codes and build strings manually
 lime := ansi.ColorCode("green+h:black")
