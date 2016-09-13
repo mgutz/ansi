@@ -36,6 +36,7 @@ Other examples
 Color(s, "red")            // red
 Color(s, "red+b")          // red bold
 Color(s, "red+B")          // red blinking
+Color(s, "red+f")          // red faint
 Color(s, "red+u")          // red underline
 Color(s, "red+bh")         // red bold bright
 Color(s, "red:white")      // red on white
@@ -72,6 +73,7 @@ Attributes
 
 *   b = bold foreground
 *   B = Blink foreground
+*   f = faint foreground
 *   u = underline foreground
 *   i = inverse
 *   h = high intensity (bright) foreground, background
@@ -116,4 +118,3 @@ color on Windows.
 Copyright (c) 2013 Mario Gutierrez mario@mgutz.com
 
 See the file LICENSE for copying permission.
-
