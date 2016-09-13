@@ -36,6 +36,14 @@ func TestStyles(t *testing.T) {
 	}
 }
 
+func TestFaint(t *testing.T) {
+	actual := Color("foo", "white+f")
+	expected := "\x1b[2;37mfoo\x1b[0m"
+	if actual != "foo" {
+		t.Fatalf("expected %#v, got %#v", expected, actual)
+	}
+}
+
 func ExampleColorFunc() {
 	brightGreen := ColorFunc("green+h")
 	fmt.Println(brightGreen("lime"))

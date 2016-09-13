@@ -26,6 +26,7 @@ const (
 	start     = "\033["
 	bold      = "1;"
 	blink     = "5;"
+	faint     = "2;"
 	underline = "4;"
 	inverse   = "7;"
 
@@ -169,6 +170,9 @@ func colorCode(style string) *bytes.Buffer {
 		}
 		if strings.Contains(fgStyle, "B") {
 			buf.WriteString(blink)
+		}
+		if strings.Contains(fgStyle, "f") {
+			buf.WriteString(faint)
 		}
 		if strings.Contains(fgStyle, "u") {
 			buf.WriteString(underline)
