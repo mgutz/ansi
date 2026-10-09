@@ -289,3 +289,12 @@ func DisableColors(disable bool) {
 		LightWhite = ColorCode("white+h")
 	}
 }
+
+// Hyperlink returns an OSC 8 terminal hyperlink escape sequence for url and text.
+// If ANSI codes are disabled via DisableColors, text is returned unmodified.
+func Hyperlink(url, text string) string {
+	if plain {
+		return text
+	}
+	return "\x1b]8;;" + url + "\x1b\\" + text + "\x1b]8;;\x1b\\"
+}

@@ -43,6 +43,7 @@ Color(s, "red:white")      // red on white
 Color(s, "red+b:white+h")  // red bold on white bright
 Color(s, "red+B:white+h")  // red blink on white bright
 Color(s, "off")            // turn off ansi codes
+Hyperlink(url, text)       // clickable hyperlink (OSC 8)
 ```
 
 To view color combinations, from project directory in terminal.

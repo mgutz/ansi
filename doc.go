@@ -32,6 +32,7 @@ Other examples
 	Color(s, "red:white")      // red on white
 	Color(s, "red+b:white+h")  // red bold on white bright
 	Color(s, "red+B:white+h")  // red blink on white bright
+	Hyperlink(url, text)       // clickable hyperlink (OSC 8)
 
 To view color combinations, from terminal
 
