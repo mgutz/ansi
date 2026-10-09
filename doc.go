@@ -14,7 +14,7 @@ Example
 	// create a closure to avoid recalculating ANSI code compilation
 	phosphorize := ansi.ColorFunc("green+h:black")
 	msg = phosphorize("Bring back the 80s!")
-	msg2 := phospohorize("Look, I'm a CRT!")
+	msg2 := phosphorize("Look, I'm a CRT!")
 
 	// cache escape codes and build strings manually
 	lime := ansi.ColorCode("green+h:black")
@@ -25,6 +25,7 @@ Example
 Other examples
 
 	Color(s, "red")            // red
+	Color(s, "red+d")          // red dim
 	Color(s, "red+b")          // red bold
 	Color(s, "red+B")          // red blinking
 	Color(s, "red+u")          // red underline
@@ -32,6 +33,7 @@ Other examples
 	Color(s, "red:white")      // red on white
 	Color(s, "red+b:white+h")  // red bold on white bright
 	Color(s, "red+B:white+h")  // red blink on white bright
+	Color(s, "off")            // turn off ansi codes
 
 To view color combinations, from terminal
 
